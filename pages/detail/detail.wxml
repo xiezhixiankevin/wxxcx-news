@@ -2,4 +2,7 @@
 <import src="../../components/wxParse/wxParse.wxml" />
 <view>
   <template is="wxParse" data="{{wxParseData:newsDetailData.nodes}}" />
+  <div>
+    <button>收藏</button>
+  </div>
 </view>

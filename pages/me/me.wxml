@@ -1,0 +1,13 @@
+<view class="container">
+  <image class="avatar" src="../../images/avater.png"/>
+  <text class="username">小程序2组</text>
+  <view class="collection">
+    <text class="title">我的收藏</text>
+    <view wx:for="{{collection}}">
+      <view class="collection-item">
+        <image class="thumb" src="{{item.thumbnail}}"/>
+        <text class="title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+</view>
