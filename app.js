@@ -10,7 +10,7 @@ App({
         console.log("\u7528\u6237\u7684code:" + res.code);
         wx.request({
           method: "POST",
-          url: getApp().globalData.url + "user/login",
+          url: this.globalData.url + "user/login",
           data: {
             code: res.code
           },
@@ -20,11 +20,6 @@ App({
           success: (res2) => {
             console.log("token : " + res2.data.data.token);
             this.globalData.token = res2.data.data.token;
-            // let ismatch = res2.data.data.ismatch;
-            // if (ismatch === "1")
-            //   this.globalData.ismatch = true;
-            // else if (ismatch === "0")
-            //   this.globalData.ismatch = false;
             wx.setStorageSync("token", res2.data.data.token);
           }
         });
@@ -41,5 +36,6 @@ App({
     userInfo: null,
     url: "http://localhost:8080/",
     token: null,
+    userBaseInfo:''
   }
 })

@@ -3,7 +3,7 @@
     "setting": {
         "urlCheck": false,
         "es6": true,
-        "postcss": true,
+        "postcss": false,
         "minified": true,
         "newFeature": true,
         "autoAudits": false,
@@ -13,7 +13,8 @@
             "disablePlugins": [],
             "outputPath": ""
         },
-        "condition": false
+        "condition": false,
+        "minifyWXML": true
     },
     "compileType": "miniprogram",
     "libVersion": "2.30.4",
