@@ -47,10 +47,11 @@ Page({
 
   //保存用户信息
   saveUserInfo() {
-    if (this.avatarIsChanged) {
+    console.log(this.data.avatarIsChanged)
+    if (this.data.avatarIsChanged) {
       wx.uploadFile({
         url: getApp().globalData.url + "user/uploadAvatar",
-        filePath: this.avatarUrl,
+        filePath: this.data.avatarUrl,
         name: "file",
         header: {
           "content-type": "multipart/form-data",
@@ -74,12 +75,12 @@ Page({
         "Authorization": wx.getStorageSync("token")
       },
       data: {
-        gender: this.gender,
-        birthday: this.birthday,
-        nickname: this.nickname,
-        school: this.school,
-        college: this.college,
-        description: this.description
+        gender: this.data.gender,
+        birthday: this.data.birthday,
+        nickname: this.data.nickname,
+        school: this.data.school,
+        college: this.data.college,
+        description: this.data.description
       },
       success: (res) => {
         if (res.statusCode === 200) {
@@ -101,13 +102,58 @@ Page({
     });
   },
 
-  /**
-   * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
-   */
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  bindinput_nickname(e){
+    this.setData({
+      nickname:e.detail.value
+    })
+  },
+
+  bindinput_school(e){
+    this.setData({
+      school:e.detail.value
+    })
+  },
+
+  bindinput_college(e){
+    this.setData({
+      college:e.detail.value
+    })
+  },
+
+  bindinput_description(e){
+    console.log(e.detail.value)
+    this.setData({
+      description:e.detail.value
+    })
+  },
+
+
   onLoad: function () {
     console.log("[[onLaunch]]");
-    // const userBaseInfo = getApp().globalData.userBaseInfo;
-    // console.log(userBaseInfo);
+    const userBaseInfo = getApp().globalData.userBaseInfo;
+    console.log(userBaseInfo);
+
+    this.setData({
+      avatarUrl:userBaseInfo.avatarUrl,
+      nickname:userBaseInfo.nickname,
+      gender:userBaseInfo.gender,
+      school : userBaseInfo.school,
+      college : userBaseInfo.college,
+      description : userBaseInfo.description
+    })
     // this.nickname = userBaseInfo.nickname;
     // this.gender = userBaseInfo.gender;
     // this.birthday = userBaseInfo.birthday;

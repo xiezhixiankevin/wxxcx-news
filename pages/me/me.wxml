@@ -1,43 +1,38 @@
 <view class="my-class">
-    <view class="user-info">
-        <image class="user-avatar" src="https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0" mode="aspectFill"></image>
-        <view class="user-info-right">
-        <text class="user-nickname">我想改名</text>
-        <text class="user-description">我想要一个个性标签</text>
-        </view>
-    </view>
-  
-  <!-- <view class="user-button">
-    <button bindtap="{{k}}">收藏</button>
-    <button bindtap="{{l}}">点赞</button>
-    <button>更多功能</button>
-  </view> -->
-    <div class="user-button">
-        <a href="tapCollection" class="user-link">
-            <button class="user-button-item">收藏</button>
-        </a>
-        <a href="tapLike" class="user-link">
-            <button class="user-button-item">点赞</button>
-        </a>
-        <a href="tapUserInfo" class="user-link">
-            <button class="user-button-item" bindtap="tapUserInfo">个人中心</button>
-        </a>
-    </div>
-
-    <view class='content-list'>
-        <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
-          <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}'>
-            <view class='list-item-content one-px-border'>
-              <view class='list-item-left'>
-                <image src='{{item.thumbnail_pic_s}}'></image>
-              </view>
-              <view class='list-item-right'>
-                <view class='article-title'>{{item.title}}</view>
-                <view class='article-source'>{{item.author_name}}</view>
-                <view class='article-editTime'>{{item.date}}</view>
-              </view>
-            </view>
-          </view>
-        </block>
+  <view class="user-info">
+      <image class="user-avatar" src="{{userBaseInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-info-right">
+      <text class="user-nickname">{{userBaseInfo.nickname}}</text>
+      <text class="user-description">{{userBaseInfo.description}}</text>
       </view>
+  </view>
+
+  <div class="user-button">
+      <a href="tapCollection" class="user-link">
+          <button class="user-button-item">收藏</button>
+      </a>
+      <a href="tapLike" class="user-link">
+          <button class="user-button-item">点赞</button>
+      </a>
+      <a href="tapUserInfo" class="user-link">
+          <button class="user-button-item" bindtap="tapUserInfo">个人中心</button>
+      </a>
+  </div>
+
+  <view class='content-list'>
+    <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
+      <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}'>
+        <view class='list-item-content one-px-border'>
+          <view class='list-item-left'>
+            <image src='{{item.thumbnail_pic_s}}'></image>
+          </view>
+          <view class='list-item-right'>
+            <view class='article-title'>{{item.title}}</view>
+            <view class='article-source'>{{item.author_name}}</view>
+            <view class='article-editTime'>{{item.date}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>

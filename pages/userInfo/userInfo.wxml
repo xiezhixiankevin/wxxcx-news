@@ -1,12 +1,12 @@
 <view>
   <view class="avatar-item">
     <view class="label">头像</view>
-    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" style="'background-image:' + avatarUrl"></button>
+    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" style="background-image:url({{avatarUrl}})" ></button>
   </view>
 
   <view class="item" bindtap="{{e}}">
     <view class="label">昵称</view>
-    <input class="content" placeholder="请输入" value="{{nickname}}" bindinput="{{nickname}}"/>
+    <input class="content" placeholder="请输入" value="{{nickname}}" bindinput="bindinput_nickname"/>
   </view>
 
   <view class="item" bindtap="editGender">
@@ -16,23 +16,21 @@
 
   <view class="item" bindtap="{{j}}">
     <view class="label">学校</view>
-    <input class="content" placeholder="请输入" value="{{school}}" bindinput="{{school}}"/>
+    <input class="content" placeholder="请输入" value="{{school}}" bindinput="bindinput_school"/>
   </view>
 
   <view class="item" bindtap="{{m}}">
     <view class="label">学院</view>
-    <input class="content" placeholder="请输入" value="{{college}}" bindinput="{{college}}"/>
+    <input class="content" placeholder="请输入" value="{{college}}" bindinput="bindinput_college"/>
   </view>
 
-
-  
-  <view class="item" bindtap="{{v}}">
+  <view class="item">
     <view class="label">个性描述</view>
-    <input class="content" placeholder="请输入" maxlength="16" value="{{description}}" bindinput="{{description}}"/>
-    <view wx:if="{{t}}" style="color:red">个性描述不能超过16个字</view>
+    <input class="content" placeholder="请输入" model:value="{{description}}"  bindinput="bindinput_description"/>
+    <!-- <view wx:if="{{description.length}} > 16" style="color:red">个性描述不能超过16个字</view> -->
   </view>
 
   <view class="item" style="height:100rpx;display:flex;justify-content:center;align-items:center">
-    <button class="saveButton" bindtap="{{w}}">保存</button>
+    <button class="saveButton" bindtap="saveUserInfo">保存</button>
   </view>
 </view>

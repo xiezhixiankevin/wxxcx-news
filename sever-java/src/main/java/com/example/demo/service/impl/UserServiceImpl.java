@@ -74,6 +74,7 @@ public class UserServiceImpl implements IUserService {
         UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
         String openid = user.getOpenid();
         updateWrapper.eq("openid",openid);
+        user.setBirthday("2001-11-11");
         int isOk = userMapper.update(user, updateWrapper);
         if(isOk==0){
             log.error("基本信息存入失败");
