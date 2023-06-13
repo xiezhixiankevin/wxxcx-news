@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="nav-blank"></view>
-  <scroll-view-refresh-load class='scroll-view-refresh-load-component' refreshing="{{refreshing}}" bindpulldownrefresh="onPulldownrefresh_SV">
+  <scroll-view class='scroll-view-container' scroll-y="{{true}}" refreshing="{{refreshing}}" bindpulldownrefresh="onPulldownrefresh_SV" bindscrolltolower='scrollToLower' lower-threshold='30'>
     <view class='content'>
       <view class='content-top-pic'>
         <swiper class="swiper" bindchange='handleSwiperChange' autoplay="true" interval="30000" duration="300">
@@ -44,5 +44,5 @@
         <component-copyright></component-copyright>
       </view>
     </view>
-  </scroll-view-refresh-load>
+  </scroll-view>
 </view>

@@ -4,5 +4,7 @@
   "usingComponents": {
     "component-copyright": "/components/copyright/copyright",
     "scroll-view-refresh-load": "/components/scroll-view-refresh-load/scroll-view-refresh-load"
-  }
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
 }

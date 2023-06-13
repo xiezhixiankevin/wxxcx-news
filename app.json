@@ -3,14 +3,13 @@
         "pages/index/index",
         "pages/logs/logs",
         "pages/detail/detail",
-        "pages/webview/webview",
         "pages/demo/demo",
         "pages/me/me"
     ],
     "window": {
-        "backgroundTextStyle": "light",
+        "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Coder News",
+        "navigationBarTitleText": "北交新闻",
         "navigationBarTextStyle": "black"
     },
     "sitemapLocation": "sitemap.json",

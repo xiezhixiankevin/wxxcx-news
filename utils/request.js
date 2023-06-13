@@ -12,8 +12,8 @@ const request = options => {
       method: finalOption.method,
       success: res => {
         if (res.data.error_code) {
-          // 接口数据超过每日上限，使用 mock 数据
-          resolve(JSON.parse(JSON.stringify(mockData[finalOption.newstype])))
+          // 接口数据超过每日上限，使用 mock 数据 //默认top
+          resolve(JSON.parse(JSON.stringify(mockData['top'])))
         } else {
           resolve(res.data)
         }

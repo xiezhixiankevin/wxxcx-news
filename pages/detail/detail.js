@@ -42,7 +42,7 @@ Page({
       url: this.data.url
     }
 
-    // 获取评论
+    // 添加评论
     wx.request({
         url: 'http://localhost:8080/comment/addComments',
         method: 'post',
@@ -102,7 +102,8 @@ Page({
         },
         success(res) {
             that.setData({
-                comments: res.data.data
+                comments: res.data.data,
+                commentCount: res.data.data.length
             });
         },
         fail(err) {

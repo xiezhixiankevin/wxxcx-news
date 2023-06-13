@@ -1,5 +1,6 @@
 const app = getApp()
-const appKey = '92d1b194fde6d11ed4c36f07c6def57d' // 用于访问新闻接口的appKey
+// const appKey = '92d1b194fde6d11ed4c36f07c6def57d' // 用于访问新闻接口的appKey xzx
+const appKey = 'e8c298f8cb626f763df2aeefd590bc18' // 用于访问新闻接口的appKey zcx
 const request = require('../../utils/request.js')
 const extractArticleInfo = require('./utils/getArticleTime.js')
 const shuffle = require('./utils/shuffle.js')
@@ -18,6 +19,8 @@ Page({
       { name: '国内', nameID: '201709', newsType: 'guonei' },
       { name: '国际', nameID: '2017010', newsType: 'guoji' }
     ],
+    flag: true, //触底开关
+    page:1,
     swiperIndex: '1/4',
     topPic: [],
     tapID: 201701, // 判断是否选中
@@ -25,14 +28,73 @@ Page({
     showCopyright: false,
     refreshing: false
   },
-
+  scrollToLower:function(){
+    wx.showLoading({
+        title: '加载中..'
+        });
+    this.page += 1;
+    this.updated(this.data.newsType,this.data.page);
+  },
   onLoad: function() {
     this.renderPage('top', false, () => {
       this.setData({
         showCopyright: true
       })
-    })
+    });
+    this.data.page = 2;
   },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh:function(){
+    this.onRefresh();
+  },
+
+   // 处理触底数组合并
+   updated(newsType,page) {
+    var that = this;
+    wx.showLoading({
+        title: '更新数据中...'
+      });
+    request({ url: `https://v.juhe.cn/toutiao/index?type=${newsType}&key=${appKey}&page=${page}`, newstype: newsType })
+    .then(res => {
+        wx.hideLoading()
+        let { articleList, topPic } = extractArticleInfo(res.result.data)
+        this.setData({
+        contentNewsList: that.contentNewsList.concat(articleList),
+        topPic:that.topPic.concat(topPic)
+        });
+    })
+    .catch(error => {
+        wx.hideLoading()
+    });
+  },
+
+
+  onRefresh:function(){
+    //导航条加载动画
+    wx.showNavigationBarLoading()
+    //loading 提示框
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    console.log("下拉刷新啦");
+    var that = this;
+    setTimeout(function () {
+      wx.hideLoading();
+      wx.hideNavigationBarLoading();
+      that.renderPage('top', false, () => {
+        that.setData({
+          refreshing: false
+        })
+      })
+      that.data.page = 2;
+      //停止下拉刷新
+      wx.stopPullDownRefresh();
+    }, 2000)
+  },
+
 
   // headerBar 点击
   headerTitleClick: function(e) {
@@ -56,27 +118,20 @@ Page({
     })
   },
 
-  onPulldownrefresh_SV() {
-    this.renderPage('top', true, () => {
-      this.setData({
-        refreshing: false
-      })
-    })
-  },
   // isRefresh 是否为下拉刷新
   renderPage: function(newsType, isRefresh, calllBack) {
-    if (!isRefresh) {
       wx.showLoading({
         title: '加载中'
       })
+      var that = this;
       request({ url: `https://v.juhe.cn/toutiao/index?type=${newsType}&key=${appKey}`, newstype: newsType })
         .then(res => {
           wx.hideLoading()
           let { articleList, topPic } = extractArticleInfo(res.result.data)
           this.setData({
             contentNewsList: articleList,
-            topPic
-          })
+            topPic:topPic
+          });
           if (calllBack) {
             calllBack()
           }
@@ -84,20 +139,5 @@ Page({
         .catch(error => {
           wx.hideLoading()
         })
-    } else {
-      // 数组随机排序，模拟刷新
-      let contentNewsListTemp = shuffle(JSON.parse(JSON.stringify(this.data.contentNewsList)))
-      /* contentNewsListTemp.sort(() => {
-        return Math.random() > 0.5 ? -1 : 1
-      }) */
-      setTimeout(() => {
-        this.setData({
-          contentNewsList: contentNewsListTemp
-        })
-        if (calllBack) {
-          calllBack()
-        }
-      }, 2000)
-    }
   }
 })

@@ -2,9 +2,6 @@
 <import src="../../components/wxParse/wxParse.wxml" />
 <view>
   <template is="wxParse" data="{{wxParseData:newsDetailData.nodes}}" />
-  <div>
-    <button>收藏</button>
-  </div>
   <!-- 添加评论区 -->
 <view class="comment">
   <view class="comment-header">
@@ -25,6 +22,8 @@
     <form class="comment-form" bindsubmit="submitComment">
       <input class="comment-input" type="text" placeholder="发表评论" bindinput="inputComment" value="{{commentInput}}" />
       <button class="comment-btn" form-type="submit" disabled="{{!canSubmit}}">发送</button>
+      <button class="comment-btn" form-type="submit" disabled="{{!canSubmit}}">收藏</button>
+      <button class="comment-btn" form-type="submit" disabled="{{!canSubmit}}">点赞</button>
     </form>
   </view>
 </view>
