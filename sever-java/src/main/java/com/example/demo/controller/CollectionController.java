@@ -6,6 +6,7 @@ import com.example.demo.pojo.Collection;
 import com.example.demo.service.CollectionService;
 import com.example.demo.utils.JwtUtil;
 import com.example.demo.utils.contentNewsList;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/collection")
+@Slf4j
 public class CollectionController {
     @Autowired
     private CollectionService collectionService;
@@ -56,11 +58,12 @@ public class CollectionController {
     }
 
     // 获取对应用户所有的收藏新闻信息
-    @PostMapping("/getCollections")
+    @GetMapping("/getCollections")
     public R<?> getCollections(HttpServletRequest request) {
         // 1 从token中获取openid
         String token = request.getHeader("Authorization");
         String openid = jwtUtil.getOpenidFromToken(token);
+        log.info("正在调用getCollections接口");
 
         // 2 获取所有的收藏信息
         List<contentNewsList> collections = collectionService.getCollections(openid);
