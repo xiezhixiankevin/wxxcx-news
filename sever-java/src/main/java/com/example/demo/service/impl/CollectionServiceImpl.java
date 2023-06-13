@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.demo.mapper.NewsMapper;
 import com.example.demo.pojo.Collection;
 import com.example.demo.mapper.CollectionMapper;
-import com.example.demo.pojo.Likes;
 import com.example.demo.pojo.News;
 import com.example.demo.service.CollectionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -53,7 +52,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
 
             // 1.2 新插入collection表一条信息
             Collection collection = new Collection();
-            collection.setAuthorName(news.getAuthor_name());
+            collection.setAuthor_name(news.getAuthor_name());
             collection.setUrl(url);
             collection.setTitle(news.getUrl());
             collection.setOpenid(openid);
@@ -103,11 +102,19 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
             c.setTitle(collection.getTitle());
             c.setDate(date);
             c.setThumbnail_pic_s(collection.getThumbnail_pic_s());
-            c.setAuthor_name(collection.getAuthorName());
+            c.setAuthor_name(collection.getAuthor_name());
             contentNewsLists.add(c);
         }
 
         // 3 返回查询结果
         return contentNewsLists;
+    }
+
+    @Override
+    public boolean ifCollected(String url, String openid) {
+        QueryWrapper<Collection> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("url",url);
+        queryWrapper.eq("openid",openid);
+        return collectionMapper.selectOne(queryWrapper) != null;
     }
 }

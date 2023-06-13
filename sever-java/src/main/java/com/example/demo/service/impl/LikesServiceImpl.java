@@ -101,4 +101,13 @@ public class LikesServiceImpl implements LikesService {
         // 3 返回查询结果
         return contentNewsLists;
     }
+
+    @Override
+    public boolean ifLiked(String url, String openid) {
+        QueryWrapper<Likes> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("url",url);//https://mini.eastday.com/mobile/230613145926066985548.html
+        queryWrapper.eq("openid",openid);//ocWC66WG7HA18075IAUdxjWXNjww
+        List<Likes> likesList = likesMapper.selectList(queryWrapper);
+        return  !likesList.isEmpty();
+    }
 }

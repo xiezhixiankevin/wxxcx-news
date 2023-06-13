@@ -57,9 +57,10 @@ public class CommentController {
 
         // 3 返回操作是否成功的信息
         if (success) {
-            return R.failed("添加失败");
-        } else {
             return R.ok(null);
+        } else {
+            return R.failed("添加失败");
+
         }
     }
 }

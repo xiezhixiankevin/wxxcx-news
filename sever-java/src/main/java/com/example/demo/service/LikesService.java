@@ -10,4 +10,6 @@ public interface LikesService {
 
     // 获取对应用户的所有点赞过的新闻信息
     List<contentNewsList> getLikes(String openid);
+
+    boolean ifLiked(String url, String openid);
 }

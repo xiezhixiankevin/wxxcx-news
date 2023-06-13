@@ -12,7 +12,7 @@
     <view wx:for="{{comments}}" wx:key="comment.id" class="comment-item">
       <image class="avatar" src="../../images/avater_comment.png" />
       <view class="comment-details">
-        <text class="user-name">{{item.name}}</text>
+        <text class="user-name">{{item.nickname}}</text>
         <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;</text>
         <text class="comment-content">{{item.content}}</text>
       </view>
@@ -23,9 +23,9 @@
       <input class="comment-input" type="text" placeholder="发表评论" bindinput="inputComment" value="{{commentInput}}" />
     </form>
     <button class="tapbtn1" bindtap="submitComment" plain="true" ><image class="tapimg1" src='../../images/comment.png'></image></button>
-    <button class="tapbtn1" bindtap="likeTap" plain="true" ><image class="tapimg1" src='../../images/like.png'></image></button>
+    <button class="tapbtn1" bindtap="likeTap" plain="true" ><image class="tapimg1" src="{{likeControl?'../../images/like.png':'../../images/like-active.png'}}"></image></button>
     <span class="like-count">{{likeNum}}</span>
-    <button class="tapbtn1" bindtap="collectTap" plain="true" ><image class="tapimg1" src='../../images/collect.png'></image></button>
+    <button class="tapbtn1"  bindtap="collectTap" plain="true" ><image class="tapimg1" src="{{collectControl?'../../images/collect.png':'../../images/collect-active.png'}}"></image></button>
     <span class="collect-count">{{collectNum}}</span>
   </view>
 </view>

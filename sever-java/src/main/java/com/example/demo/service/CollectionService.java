@@ -23,4 +23,6 @@ public interface CollectionService extends IService<Collection> {
 
     // 获取对应用户的所有收藏新闻信息
     List<contentNewsList> getCollections(String openid);
+
+    boolean ifCollected(String url, String openid);
 }

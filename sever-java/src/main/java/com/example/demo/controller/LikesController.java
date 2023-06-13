@@ -20,6 +20,20 @@ public class LikesController {
     private LikesService likesService;
     @Autowired
     private JwtUtil jwtUtil;
+
+    // 点赞接口
+    @PostMapping("/ifLiked")
+    public R<?> ifLiked(@RequestParam String url, HttpServletRequest request) {
+        // 1 从token中获取openid
+        String token = request.getHeader("Authorization");
+        String openid = jwtUtil.getOpenidFromToken(token);
+
+        // 2 处理点赞行为
+        boolean ifLiked =likesService.ifLiked(url,openid);
+
+        return R.ok(ifLiked);
+    }
+
     // 点赞接口
     @PostMapping("/kudos")
     public R<?> kudos(@RequestParam String url, @RequestParam int type, HttpServletRequest request) {
