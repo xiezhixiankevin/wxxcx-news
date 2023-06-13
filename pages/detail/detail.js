@@ -91,7 +91,10 @@ Page({
             likeNum:this.data.likeNum-1
         });
       }
-      let that = this.data.likeControl;
+      this.setData({
+        likeControl: this.data.likeControl?false:true
+      });
+      let that = !this.data.likeControl;
       wx.request({
         url: 'http://localhost:8080/news/like',
         method: 'post',
@@ -109,9 +112,7 @@ Page({
           console.error(err)
         }
       });
-      this.setData({
-        likeControl: this.data.likeControl?false:true
-      });
+
   },
   // 收藏
   collectTap() {
@@ -124,7 +125,10 @@ Page({
             collectNum:this.data.collectNum-1
         });
       }
-      let that = this.data.collectControl;
+      this.setData({
+        collectControl: this.data.collectControl?false:true
+      });
+      let that = !this.data.collectControl;
       wx.request({
         url: 'http://localhost:8080/news/collect',
         method: 'post',
@@ -142,9 +146,7 @@ Page({
           console.error(err)
         }
       });      
-      this.setData({
-        collectControl: this.data.collectControl?false:true
-      });
+      
 },
 
   /**
@@ -177,10 +179,10 @@ Page({
         method: 'post',
         data: {
             url:newsUrl,
-            title:newsTitle,
-            author_name:newsAuthor,
-            date:newsdate,
-            thumbnail_pic_s:newsthumbnail_pic_s
+            title:that.data.newsTitle,
+            author_name:that.data.newsAuthor,
+            date:that.data.newsdate,
+            thumbnail_pic_s:that.data.newsthumbnail_pic_s
         },
         header: {
             'content-type': 'application/x-www-form-urlencoded'
