@@ -1,6 +1,7 @@
 const app = getApp()
 // const appKey = '92d1b194fde6d11ed4c36f07c6def57d' // 用于访问新闻接口的appKey xzx
 const appKey = 'e8c298f8cb626f763df2aeefd590bc18' // 用于访问新闻接口的appKey zcx
+// const appKey = '7341610d45c4f3e0228f4ed302df9b3d' // 用于访问新闻接口的appKey wj
 const request = require('../../utils/request.js')
 const extractArticleInfo = require('./utils/getArticleTime.js')
 const shuffle = require('./utils/shuffle.js')
@@ -19,6 +20,7 @@ Page({
       { name: '国内', nameID: '201709', newsType: 'guonei' },
       { name: '国际', nameID: '2017010', newsType: 'guoji' }
     ],
+    newsType:"top",
     flag: true, //触底开关
     page:1,
     swiperIndex: '1/4',
@@ -32,7 +34,7 @@ Page({
     wx.showLoading({
         title: '加载中..'
         });
-    this.page += 1;
+    this.data.page += 1;
     this.updated(this.data.newsType,this.data.page);
   },
   onLoad: function() {
@@ -54,16 +56,14 @@ Page({
    // 处理触底数组合并
    updated(newsType,page) {
     var that = this;
-    wx.showLoading({
-        title: '更新数据中...'
-      });
     request({ url: `https://v.juhe.cn/toutiao/index?type=${newsType}&key=${appKey}&page=${page}`, newstype: newsType })
     .then(res => {
         wx.hideLoading()
-        let { articleList, topPic } = extractArticleInfo(res.result.data)
+        let { articleList, topPic } = extractArticleInfo(res.result.data);
+        let articleList1 = that.data.contentNewsList.concat(articleList);
+        console.log(articleList1.length)
         this.setData({
-        contentNewsList: that.contentNewsList.concat(articleList),
-        topPic:that.topPic.concat(topPic)
+            contentNewsList: articleList1
         });
     })
     .catch(error => {
@@ -99,16 +99,21 @@ Page({
   // headerBar 点击
   headerTitleClick: function(e) {
     this.setData({ tapID: e.target.dataset.id })
+    this.data.newsType = e.currentTarget.dataset.newstype;
     this.renderPage(e.currentTarget.dataset.newstype, false)
   },
 
   //跳转到新闻详情页
   viewDetail: function(e) {
     let newsUrl = e.currentTarget.dataset.newsurl || ''
+    let newsuniquekey = e.currentTarget.dataset.newsuniquekey || ''
+    let newsthumbnail_pic_s = e.currentTarget.dataset.newsthumbnail_pic_s || ''
+    let newsdate = e.currentTarget.dataset.newsdate || ''
     let newsTitle = e.currentTarget.dataset.newstitle || ''
     let newsAuthor = e.currentTarget.dataset.newsauthor || ''
+    // appkey time photo
     wx.navigateTo({
-      url: '../detail/detail?newsUrl=' + newsUrl
+      url: '../detail/detail?newsUrl=' + newsUrl+'&newsuniquekey=' + newsuniquekey+'&newsthumbnail_pic_s=' + newsthumbnail_pic_s+'&newsdate=' + newsdate+'&newsTitle=' + newsTitle+'&newsAuthor=' + newsAuthor
     })
   },
 
