@@ -67,7 +67,7 @@
   
   .user-button-item {
     color: #5858ee;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     /* padding: 10px; */
     font-size: 16px;
     font-weight: bold;

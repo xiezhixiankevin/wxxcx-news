@@ -53,7 +53,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
 
             // 1.2 新插入collection表一条信息
             Collection collection = new Collection();
-            collection.setAuthorName(news.getAuthor_name());
+            collection.setAuthor_name(news.getAuthor_name());
             collection.setUrl(url);
             collection.setTitle(news.getUrl());
             collection.setOpenid(openid);
@@ -103,7 +103,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
             c.setTitle(collection.getTitle());
             c.setDate(date);
             c.setThumbnail_pic_s(collection.getThumbnail_pic_s());
-            c.setAuthor_name(collection.getAuthorName());
+            c.setAuthor_name(collection.getAuthor_name());
             contentNewsLists.add(c);
         }
 

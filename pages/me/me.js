@@ -8,10 +8,26 @@ Page({
         isCollect: true,
     },
 
+    tapCollect(){
+        console.log("[[tapCollect]]");
+        setData({
+            isCollect: false
+        })
+        isCollect=!isCollect;
+    },
+
+    tapDianzan(){
+        console.log("[[tapDianzan]]");
+        setData({
+            isCollect: true
+        })
+    },
+
     //跳转到用户信息页
     tapUserInfo() {
         console.log("[[tapUserInfo]]");
-        // getApp().globalData.userBaseInfo = this.userBaseInfo;
+        //将userBaseInfo存到全局变量中
+        getApp().globalData.userBaseInfo = this.data.userBaseInfo;
         wx.navigateTo({
           url: "/pages/userInfo/userInfo"
         });
@@ -31,7 +47,7 @@ Page({
     onLoad(options) {
         console.log("[[onLoad]]");
         //从后端获取用户信息
-        // this.getUserBaseInfo();
+        this.getUserBaseInfo();
         //获取contentNewsList
         this.getContentNewsList();
     },

@@ -9,10 +9,12 @@
 
   <div class="user-button">
       <a href="tapCollection" class="user-link">
-          <button class="user-button-item">收藏</button>
+          <button class="user-button-item" wx:if="{{isCollect}}" style="background-color: #f1cbf1" >收藏</button>
+          <button class="user-button-item" wx:else bindtap="tapCollect">收藏</button>
       </a>
       <a href="tapLike" class="user-link">
-          <button class="user-button-item">点赞</button>
+          <button class="user-button-item" wx:if="{{!isCollect}}" style="background-color: #f1cbf1">点赞</button>
+          <button class="user-button-item" wx:else bindtap="tapDianzan">点赞</button>
       </a>
       <a href="tapUserInfo" class="user-link">
           <button class="user-button-item" bindtap="tapUserInfo">个人中心</button>
