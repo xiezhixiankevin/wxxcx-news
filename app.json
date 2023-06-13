@@ -4,6 +4,7 @@
         "pages/detail/detail",
         "pages/me/me",
         "pages/userInfo/userInfo"
+
     ],
     "window": {
         "backgroundTextStyle": "dark",

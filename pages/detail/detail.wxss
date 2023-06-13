@@ -137,6 +137,8 @@ page {
   }
   
   .comment-form-container {
+    display: flex;
+    flex-direction: row;
     padding: 16rpx;
     background-color: #ffffff;
     border-radius: 8rpx;
@@ -162,20 +164,24 @@ page {
     outline: none;
   }
   
-  .comment-btn {
-    width: 128rpx;
-    height: 64rpx;
-    margin-left: 16rpx;
-    font-size: 28rpx;
-    color: #ffffff;
-    background-color: #007aff;
-    border-radius: 32rpx;
-    border: none;
-    cursor: pointer;
+  .tapimg1{  
+    width: 80rpx;
+    height: 70rpx;
   }
-  
-  .comment-btn[disabled] {
-    background-color: #cccccc;
-    cursor: not-allowed;
+   
+  .tapbtn1[plain]{
+    border:none;   
+    width: 130rpx;
+    height: 70rpx;
+  }
+  .like-count{
+  margin-left: 4px;
+  font-size: 23px;
+  color: rgb(238, 16, 16);
+}
+.collect-count{
+    margin-left: 4px;
+    font-size: 23px;
+    color: rgb(235, 195, 20);
   }
 

@@ -16,7 +16,7 @@
         <a href="tapCollection" class="user-link">
             <button class="user-button-item">收藏</button>
         </a>
-        <a href="tapCollection" class="user-link">
+        <a href="tapLike" class="user-link">
             <button class="user-button-item">点赞</button>
         </a>
         <a href="tapUserInfo" class="user-link">
