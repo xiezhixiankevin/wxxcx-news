@@ -6,12 +6,13 @@ Page({
         userBaseInfo:{},
         //是否是收藏页
         isCollect: true,
+        isFirst:true
     },
 
     tapCollect(){
         console.log("[[tapCollect]]");
         setData({
-            isCollect: false
+            isCollect: true
         })
         isCollect=!isCollect;
     },
@@ -19,7 +20,7 @@ Page({
     tapDianzan(){
         console.log("[[tapDianzan]]");
         setData({
-            isCollect: true
+            isCollect: false
         })
     },
 
@@ -54,6 +55,9 @@ Page({
         this.getUserBaseInfo();
         //获取contentNewsList
         this.getContentNewsList();
+        this.setData({
+            isFirst:false
+        })
     },
     
     //从后端获取用户信息
@@ -90,7 +94,9 @@ Page({
     },
 
     onShow() {
-
+        if(!this.data.isFirst){
+            this.getUserBaseInfo();
+        }
     }
 
 })
