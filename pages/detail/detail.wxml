@@ -10,7 +10,7 @@
   </view>
   <view class="comment-list">
     <view wx:for="{{comments}}" wx:key="comment.id" class="comment-item">
-      <image class="avatar" src="../../images/avater_comment.png" />
+      <image class="avatar" src="{{item.avatarUrl}}" />
       <view class="comment-details">
         <text class="user-name">{{item.nickname}}</text>
         <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;</text>
