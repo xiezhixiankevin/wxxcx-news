@@ -39,7 +39,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    url: "https://localhost:8080/",
+    url: "http://localhost:8080/",
     token: null,
   }
 })
