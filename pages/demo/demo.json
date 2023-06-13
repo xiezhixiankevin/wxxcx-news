@@ -1,7 +1,0 @@
-{
-  "navigationBarBackgroundColor": "#C34943",
-  "navigationBarTextStyle": "white",
-  "usingComponents": {
-    "scroll-view-refresh-load": "/components/scroll-view-refresh-load/scroll-view-refresh-load"
-  }
-}

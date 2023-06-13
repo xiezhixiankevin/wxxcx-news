@@ -1,54 +1,80 @@
-/* pages/me/me.wxss *//* me.wxss */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32rpx;
+.my-class {
+    background: linear-gradient(120deg, #ffeeff -10%, #ffffff 100%);
   }
-  
-  .avatar {
-    width: 160rpx;
-    height: 160rpx;
-    border-radius: 50%;
-    margin-bottom: 16rpx;
-  }
-  
-  .username {
-    font-size: 32rpx;
-    font-weight: bold;
-    margin-bottom: 24rpx;
-  }
-  
-  .collection {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 16rpx;
-    overflow: hidden;
-    padding: 24rpx;
-    margin-top: 24rpx;
-  }
-  
-  .title {
-    font-size: 28rpx;
-    color: #333333;
-    margin-bottom: 16rpx;
-  }
-  
-  .collection-item {
+  .user-info {
+    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    height: 96rpx;
-    margin-bottom: 16rpx;
+    height: 250rpx;
+    border-bottom: 2px solid #f1cbf1;
+  }
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: 2px solid lavender;
+  }
+  .user-info-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .user-nickname {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .user-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  /* .user-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .user-button > button:not(:last-child) {
+    margin-right: 10px;
+  }
+  .user-button button {
+    color: #5858ee;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #5858ee;
+    width: 100px;
+  } */
+  .user-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
   }
   
-  .thumb {
-    width: 80rpx;
-    height: 80rpx;
-    margin-right: 16rpx;
+  .user-link {
+    text-decoration: none;
   }
   
-  .title {
-    font-size: 28rpx;
-    color: #333333;
+  .user-button-item {
+    color: #5858ee;
+    border-radius: 10px;
+    /* padding: 10px; */
+    font-size: 16px;
+    font-weight: bold;
+    /* border: 1px solid #5858ee; */
+    width: 33vw;
+  }
+  
+  .user-button-item:not(:last-child) {
+    margin-right: 10px;
   }

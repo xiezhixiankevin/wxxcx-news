@@ -1,13 +1,26 @@
-<view class="container">
-  <image class="avatar" src="../../images/avater.png"/>
-  <text class="username">小程序2组</text>
-  <view class="collection">
-    <text class="title">我的收藏</text>
-    <view wx:for="{{collection}}">
-      <view class="collection-item">
-        <image class="thumb" src="{{item.thumbnail}}"/>
-        <text class="title">{{item.title}}</text>
-      </view>
+<view class="my-class">
+    <view class="user-info">
+        <image class="user-avatar" src="https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0" mode="aspectFill"></image>
+        <view class="user-info-right">
+        <text class="user-nickname">谢志贤</text>
+        <text class="user-description">我爱看新闻</text>
+        </view>
     </view>
-  </view>
+  
+  <!-- <view class="user-button">
+    <button bindtap="{{k}}">收藏</button>
+    <button bindtap="{{l}}">点赞</button>
+    <button>更多功能</button>
+  </view> -->
+    <div class="user-button">
+        <a href="{{k}}" class="user-link">
+            <button class="user-button-item">收藏</button>
+        </a>
+        <a href="{{l}}" class="user-link">
+            <button class="user-button-item">点赞</button>
+        </a>
+        <a href="#" class="user-link">
+            <button class="user-button-item">更多功能</button>
+        </a>
+    </div>
 </view>
