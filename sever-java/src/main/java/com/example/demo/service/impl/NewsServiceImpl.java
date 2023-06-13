@@ -44,6 +44,8 @@ public class NewsServiceImpl implements NewsService {
     public List<Comment> getCommentByNewsUrl(String url) {
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("url", url);
-        return commentMapper.selectList(queryWrapper);
+        List<Comment> comments = commentMapper.selectList(queryWrapper);
+        Collections.reverse(comments);
+        return comments;
     }
 }
