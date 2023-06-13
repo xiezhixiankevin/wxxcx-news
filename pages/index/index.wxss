@@ -14,7 +14,7 @@ page {
   width: 0;
 }
 .header-panel {
-  height: 80rpx;
+  height: 84rpx;
   width: 100%;
   white-space: nowrap;
   overflow-x: auto;
@@ -36,7 +36,7 @@ page {
   cursor: pointer;
   box-sizing: border-box;
   color: #232323;
-  /* border-bottom: 2rpx solid rgba(0, 0, 0, 0.2); */
+  background-color: rgba(184, 173, 245, 0.904);
   text-align: center;
 }
 .header-title-active {
@@ -44,6 +44,7 @@ page {
   color: #c34943;
   z-index: 99;
   font-size: 34rpx;
+  border-bottom: 200rpx solid rgba(230, 11, 11, 0.2);
 }
 .nav-blank {
   height: 80rpx;
@@ -90,6 +91,12 @@ page {
   height: 180rpx;
   width: 100%;
   box-sizing: border-box;
+  border-top: 2.5px solid rgb(243, 217, 217);
+  border-bottom: 2.5px solid rgb(243, 217, 217);
+  border-left: 5px solid rgb(243, 217, 217);
+  border-right: 5px solid rgb(243, 217, 217);
+  /* border-radius: 10px; */
+  background-color: #f9fffd
 }
 .list-item-content {
   position: relative;
@@ -99,9 +106,10 @@ page {
 }
 .list-item-left {
   height: 140rpx;
-  width: 186rpx;
+  width: 180rpx;
   margin-right: 20rpx;
   float: left;
+  background-color: #ffe0e6
 }
 .list-item-left image {
   width: 100%;
@@ -109,9 +117,10 @@ page {
 }
 .list-item-right {
   float: left;
-  width: 484rpx;
+  width: 480rpx;
   height: 140rpx;
   position: relative;
+
 }
 .article-title {
   font-size: 34rpx;
