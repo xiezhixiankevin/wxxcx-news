@@ -24,12 +24,13 @@
       </view>
       <view class='content-list'>
         <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
+
             <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}' data-newsuniquekey='{{item.uniquekey}}' data-newsdate='{{item.date}}' data-newsthumbnail_pic_s='{{item.thumbnail_pic_s}}'>
             <view class='list-item-content one-px-border' style="width: 745rpx; height: 176rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
               <view class='list-item-left' style="position: relative; left: -5rpx; top: 0rpx">
                 <image src='{{item.thumbnail_pic_s}}' style="position: relative; left: 3rpx; top: 0rpx"></image>
               </view>
-              <view class='list-item-right' style="position: ; left: 3rpx; top: 0rpx">
+              <view class='list-item-right' style="position: relative; left: 3rpx; top: 0rpx">
                 <view class='article-title'>{{item.title}}</view>
                 <view class='article-source' style="position: absolute; left: 236rpx; top: 109rpx">{{item.author_name}}</view>
                 <view class='article-editTime'>{{item.date}}</view>

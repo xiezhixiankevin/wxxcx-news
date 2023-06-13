@@ -71,5 +71,18 @@ public class CollectionController {
         // 3 返回结果
         return R.ok(collections);
     }
+
+    // 判断是否收藏
+    @PostMapping("/ifCollected")
+    public R<?> ifLiked(@RequestParam String url, HttpServletRequest request) {
+        // 1 从token中获取openid
+        String token = request.getHeader("Authorization");
+        String openid = jwtUtil.getOpenidFromToken(token);
+
+        // 2 判断是否收藏
+        boolean ifCollected =collectionService.ifCollected(url,openid);
+
+        return R.ok(ifCollected);
+    }
 }
 

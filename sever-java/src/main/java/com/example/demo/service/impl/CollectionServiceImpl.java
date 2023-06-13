@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.demo.mapper.NewsMapper;
 import com.example.demo.pojo.Collection;
 import com.example.demo.mapper.CollectionMapper;
-import com.example.demo.pojo.Likes;
 import com.example.demo.pojo.News;
 import com.example.demo.service.CollectionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -55,7 +54,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
             Collection collection = new Collection();
             collection.setAuthor_name(news.getAuthor_name());
             collection.setUrl(url);
-            collection.setTitle(news.getUrl());
+            collection.setTitle(news.getTitle());
             collection.setOpenid(openid);
             collection.setThumbnail_pic_s(news.getThumbnail_pic_s());
             collectionMapper.insert(collection);
@@ -109,5 +108,13 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
 
         // 3 返回查询结果
         return contentNewsLists;
+    }
+
+    @Override
+    public boolean ifCollected(String url, String openid) {
+        QueryWrapper<Collection> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("url",url);
+        queryWrapper.eq("openid",openid);
+        return collectionMapper.selectOne(queryWrapper) != null;
     }
 }

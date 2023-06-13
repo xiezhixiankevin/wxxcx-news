@@ -36,10 +36,14 @@ Page({
     //跳转到新闻详情页
     viewDetail: function(e) {
         let newsUrl = e.currentTarget.dataset.newsurl || ''
+        let newsuniquekey = e.currentTarget.dataset.newsuniquekey || ''
+        let newsthumbnail_pic_s = e.currentTarget.dataset.newsthumbnail_pic_s || ''
+        let newsdate = e.currentTarget.dataset.newsdate || ''
         let newsTitle = e.currentTarget.dataset.newstitle || ''
         let newsAuthor = e.currentTarget.dataset.newsauthor || ''
+        // appkey time photo
         wx.navigateTo({
-        url: '../detail/detail?newsUrl=' + newsUrl
+        url: '../detail/detail?newsUrl=' + newsUrl+'&newsuniquekey=' + newsuniquekey+'&newsthumbnail_pic_s=' + newsthumbnail_pic_s+'&newsdate=' + newsdate+'&newsTitle=' + newsTitle+'&newsAuthor=' + newsAuthor
         })
     },
 

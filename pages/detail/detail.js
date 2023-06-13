@@ -44,34 +44,62 @@ Page({
     }
 
     const newComment = {
-      name: '匿名用户',
+      nickname: '匿名用户',
       content: content,
       url: this.data.url
     }
 
     // 添加评论
+    let this1 = this;
     wx.request({
-        url: 'http://localhost:8080/comment/addComments',
+        url: 'http://localhost:8080/comment/addNewComment',
         method: 'post',
         data: {
-            url: newComment.url,
-            name: newComment.name,
+            url: this1.data.newsUrl,
             content: newComment.content
         },
         header: {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded',
+            "Authorization": wx.getStorageSync("token")
         },
         success(res) {
-            console.log(res)
+            // 获取新评论
+            wx.request({
+                url: 'http://localhost:8080/news/getNews',
+                method: 'post',
+                data: {
+                    url:this1.data.newsUrl,
+                    title:this1.data.newsTitle,
+                    author_name:this1.data.newsAuthor,
+                    date:this1.data.newsdate,
+                    thumbnail_pic_s:this1.data.newsthumbnail_pic_s
+                },
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    "Authorization": wx.getStorageSync("token")
+                },
+                success(res) {
+                    this1.setData({
+                        comments: res.data.data.comments,
+                        commentCount: res.data.data.comments==null?0:res.data.data.comments.length,
+                        likeNum:res.data.data.news.likes,
+                        collectNum:res.data.data.news.collections,
+                    });
+                },
+                fail(err) {
+                  console.error(err)
+                }
+              });
         },
         fail(err) {
           console.error(err)
         }
-      })
+      });
+
 
     this.setData({
-      comments: this.data.comments.concat(newComment),
-      commentCount: this.data.commentCount + 1,
+    //   comments: this.data.comments.concat(newComment),
+    //   commentCount: this.data.commentCount + 1,
       commentInput: '',
       canSubmit: false
     })
@@ -95,15 +123,17 @@ Page({
         likeControl: this.data.likeControl?false:true
       });
       let that = !this.data.likeControl;
+      let this1 = this;
       wx.request({
-        url: 'http://localhost:8080/news/like',
+        url: 'http://localhost:8080/likes/kudos',
         method: 'post',
         data: {
-            url: newComment.url,
-            type: that,
+            url: this1.data.newsUrl,
+            type: that?1:-1,
         },
         header: {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded',
+            "Authorization": wx.getStorageSync("token")
         },
         success(res) {
             console.log(res)
@@ -129,15 +159,17 @@ Page({
         collectControl: this.data.collectControl?false:true
       });
       let that = !this.data.collectControl;
+      let this1 = this;
       wx.request({
-        url: 'http://localhost:8080/news/collect',
+        url: 'http://localhost:8080/collection/collect',
         method: 'post',
         data: {
-            url: newComment.url,
-            type: that,
+            url: this1.data.newsUrl,
+            type: that?1:-1,
         },
         header: {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded',
+            "Authorization": wx.getStorageSync("token")
         },
         success(res) {
             console.log(res)
@@ -175,7 +207,7 @@ Page({
     
     // 获取评论，点赞数，收藏数
     wx.request({
-        url: 'http://localhost:8080/news/listNewsInfo',
+        url: 'http://localhost:8080/news/getNews',
         method: 'post',
         data: {
             url:newsUrl,
@@ -185,20 +217,62 @@ Page({
             thumbnail_pic_s:that.data.newsthumbnail_pic_s
         },
         header: {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded',
+            "Authorization": wx.getStorageSync("token")
         },
         success(res) {
             that.setData({
-                comments: res.data.data.list,
-                commentCount: res.data.data.list.length,
-                likeNum:res.data.data.likeNum,
-                collectNum:res.data.data.collectNum,
+                comments: res.data.data.comments,
+                commentCount: res.data.data.comments==null?0:res.data.data.comments.length,
+                likeNum:res.data.data.news.likes,
+                collectNum:res.data.data.news.collections,
             });
         },
         fail(err) {
           console.error(err)
         }
       });
+      let this1 = this;
+    // 获取是否自己点过
+    wx.request({
+        url: 'http://localhost:8080/likes/ifLiked',
+        method: 'post',
+        data: {
+            url: this1.data.newsUrl,
+        },
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            "Authorization": wx.getStorageSync("token")
+        },
+        success(res) {
+            that.setData({
+                likeControl: !res.data.data
+            });
+        },
+        fail(err) {
+          console.error(err)
+        }
+      });
+      // 获取是否自己收藏过
+      wx.request({
+          url: 'http://localhost:8080/collection/ifCollected',
+          method: 'post',
+          data: {
+              url: this1.data.newsUrl,
+          },
+          header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              "Authorization": wx.getStorageSync("token")
+          },
+          success(res) {
+              that.setData({
+                  collectControl: !res.data.data
+              });
+          },
+          fail(err) {
+            console.error(err)
+          }
+        });
     
     
     
