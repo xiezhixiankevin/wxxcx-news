@@ -41,4 +41,141 @@ page {
   line-height: 28px;
   margin-top: 20px;
 }
+.comment {
+    margin-top: 32rpx;
+  }
+  
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16rpx;
+    padding: 16rpx;
+    background-color: #fafafa;
+    border-radius: 8rpx;
+  }
+  
+  .comment-title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .comment-count {
+    font-size: 24rpx;
+    color: #666666;
+  }
+  
+  .comment-list {
+    margin-bottom: 24rpx;
+    background-color: #ffffff;
+    border-radius: 8rpx;
+    overflow: hidden;
+  }
+  
+  .comment-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 16rpx;
+    border-bottom: 1rpx solid #e6e6e6;
+  }
+  
+  .avatar {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+    margin-right: 16rpx;
+  }
+  
+  .comment-details {
+    flex: 1;
+  }
+  
+  .user-name {
+    font-size: 26rpx;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .comment-content {
+    font-size: 28rpx;
+    color: #666666;
+    margin-top: 8rpx;
+    margin-bottom: 16rpx;
+  }
+  
+  .comment-action {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .comment-time {
+    font-size: 24rpx;
+    color: #999999;
+  }
+  
+  .comment-reply {
+    font-size: 24rpx;
+    color: #007aff;
+  }
+  
+  .comment-like {
+    font-size: 24rpx;
+    color: #999999;
+    margin-left: 16rpx;
+  }
+  
+  .like-btn {
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: 16rpx;
+    cursor: pointer;
+  }
+  
+  .like-btn:hover {
+    opacity: 0.8;
+  }
+  
+  .comment-form-container {
+    padding: 16rpx;
+    background-color: #ffffff;
+    border-radius: 8rpx;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  }
+  
+  .comment-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .comment-input {
+    flex: 1;
+    height: 64rpx;
+    padding: 0 16rpx;
+    font-size: 28rpx;
+    border: none;
+    border-radius: 32rpx;
+    background-color: #f9f9f9;
+  }
+  
+  .comment-input:focus {
+    outline: none;
+  }
+  
+  .comment-btn {
+    width: 128rpx;
+    height: 64rpx;
+    margin-left: 16rpx;
+    font-size: 28rpx;
+    color: #ffffff;
+    background-color: #007aff;
+    border-radius: 32rpx;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .comment-btn[disabled] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
 
