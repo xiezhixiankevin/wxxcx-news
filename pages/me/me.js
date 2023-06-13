@@ -8,7 +8,7 @@ Page({
     //跳转到用户信息页
     tapUserInfo() {
         console.log("[[tapUserInfo]]");
-        getApp().globalData.userBaseInfo = this.userBaseInfo;
+        // getApp().globalData.userBaseInfo = this.userBaseInfo;
         wx.navigateTo({
           url: "/pages/userInfo/userInfo"
         });

@@ -1,7 +1,7 @@
 <view>
   <view class="avatar-item">
     <view class="label">头像</view>
-    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="{{a}}" style="{{'background-image:' + b}}"></button>
+    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" style="{{'background-image:' + b}}"></button>
   </view>
   <view class="item" bindtap="{{e}}">
     <view class="label">昵称</view>
