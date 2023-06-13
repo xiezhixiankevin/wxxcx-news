@@ -1,35 +1,37 @@
 <view>
   <view class="avatar-item">
     <view class="label">头像</view>
-    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" style="{{'background-image:' + b}}"></button>
+    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" style="'background-image:' + avatarUrl"></button>
   </view>
+
   <view class="item" bindtap="{{e}}">
     <view class="label">昵称</view>
-    <input class="content" placeholder="请输入" value="{{c}}" bindinput="{{d}}"/>
+    <input class="content" placeholder="请输入" value="{{nickname}}" bindinput="{{nickname}}"/>
   </view>
-  <view class="item" bindtap="{{g}}">
+
+  <view class="item" bindtap="editGender">
     <view class="label">性别</view>
-    <view class="content" style="height:100%">{{f}}</view>
+    <view class="content" style="height:100%">{{gender}}</view>
   </view>
+
   <view class="item" bindtap="{{j}}">
     <view class="label">学校</view>
-    <input class="content" placeholder="请输入" value="{{h}}" bindinput="{{i}}"/>
+    <input class="content" placeholder="请输入" value="{{school}}" bindinput="{{school}}"/>
   </view>
+
   <view class="item" bindtap="{{m}}">
     <view class="label">学院</view>
-    <input class="content" placeholder="请输入" value="{{k}}" bindinput="{{l}}"/>
+    <input class="content" placeholder="请输入" value="{{college}}" bindinput="{{college}}"/>
   </view>
-  <view class="item" bindtap="{{q}}">
-    <view class="label">生日</view>
-    <view class="content">
-      <picker mode="date" bindchange="{{o}}" value="{{p}}">{{n}}</picker>
-    </view>
-  </view>
+
+
+  
   <view class="item" bindtap="{{v}}">
     <view class="label">个性描述</view>
-    <input class="content" placeholder="请输入" maxlength="16" value="{{r}}" bindinput="{{s}}"/>
+    <input class="content" placeholder="请输入" maxlength="16" value="{{description}}" bindinput="{{description}}"/>
     <view wx:if="{{t}}" style="color:red">个性描述不能超过16个字</view>
   </view>
+
   <view class="item" style="height:100rpx;display:flex;justify-content:center;align-items:center">
     <button class="saveButton" bindtap="{{w}}">保存</button>
   </view>
