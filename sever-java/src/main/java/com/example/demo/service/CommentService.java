@@ -12,5 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-06-13
  */
 public interface CommentService extends IService<Comment> {
-
+    // 添加一条新的评论
+    boolean addComment(String openid, String content, String url);
 }

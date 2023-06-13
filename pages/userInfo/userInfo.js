@@ -3,9 +3,9 @@ Page({
       gender: "",
       birthday: "",
       nickname: "测试",
-      school: "",
-      college: "",
-      description: "",
+      school: "北京交通大学",
+      college: "软件学院",
+      description: "个人描述",
       avatarUrl: "",
       avatarIsChanged: false
   },
@@ -14,18 +14,26 @@ Page({
   onChooseAvatar(e) {
     console.log("【【onChooseAvatar】】");
     const { avatarUrl } = e.detail;
-    this.avatarUrl = avatarUrl;
-    this.avatarIsChanged = true;
+    console.log(avatarUrl);
+    this.setData({
+      avatarUrl:avatarUrl,
+      avatarIsChanged : true
+    })
+    // this.avatarUrl = avatarUrl;
+    // this.avatarIsChanged = true;
   },
 
   //编辑性别
   editGender() {
     console.log("[[editGender]]");
-    let genderList = ["\u7537", "\u5973"];
+    let genderList = ["男", "女"];
     wx.showActionSheet({
       itemList: genderList,
       success: (res) => {
-        this.gender = genderList[res.tapIndex];
+        // this.gender = genderList[res.tapIndex];
+        this.setData({
+          gender:genderList[res.tapIndex]
+        })
       },
       fail: (res) => {
         console.log(res.errMsg);

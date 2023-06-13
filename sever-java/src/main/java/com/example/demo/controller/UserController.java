@@ -46,16 +46,15 @@ public class UserController {
     @PostMapping("/login")
     @NoNeedAuthorization
     public R authorizeLogin(@RequestParam("code") String code) {
-        log.info("code:"+code);
+
         //通过code换取信息
         JSONObject resultJson = GetUserInfoUtil.getResultJson(code);
-        log.info("resultJson:"+resultJson);
+
         if (resultJson.has("openid")){
             //获取sessionKey和openId
             String sessionKey = resultJson.get("session_key").toString();
             String openid = resultJson.get("openid").toString();
             log.info("openid："+openid);
-
 
             //生成自定义登录态session
             String session = null;

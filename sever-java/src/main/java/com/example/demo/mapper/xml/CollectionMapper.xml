@@ -7,14 +7,14 @@
         <id column="id" property="id" />
         <result column="url" property="url" />
         <result column="title" property="title" />
-        <result column="img_path" property="imgPath" />
+        <result column="thumbnail_pic_s" property="thumbnail_pic_s" />
         <result column="author_name" property="authorName" />
         <result column="openid" property="openid" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, url, title, img_path, author_name, openid
+        id, url, title, thumbnail_pic_s, author_name, openid
     </sql>
 
 </mapper>

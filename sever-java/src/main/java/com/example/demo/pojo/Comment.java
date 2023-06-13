@@ -32,4 +32,7 @@ public class Comment implements Serializable {
 
     private String openid;
 
+    private String nickname;
+
+    private String avatarUrl;
 }

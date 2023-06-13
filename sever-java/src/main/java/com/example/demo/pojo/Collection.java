@@ -1,36 +1,38 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
+import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author xzx
+ * @since 2023-06-13
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("likes")
-public class Likes implements Serializable {
+public class Collection implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    private String url;
 
     private String title;
 
-    private String img_path;
+    private String thumbnail_pic_s;
 
-    private String author_name;
+    private String authorName;
 
     private String openid;
-
-    private String url;
 }

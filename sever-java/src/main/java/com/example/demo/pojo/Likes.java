@@ -16,8 +16,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("news")
-public class News implements Serializable {
+@TableName("likes")
+public class Likes implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,13 +26,11 @@ public class News implements Serializable {
 
     private String title;
 
-    private String img_path;
+    private String thumbnail_pic_s;
 
     private String author_name;
 
-    private Integer likes;
-
-    private Integer collections;
+    private String openid;
 
     private String url;
 }
