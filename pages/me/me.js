@@ -11,17 +11,18 @@ Page({
 
     tapCollect(){
         console.log("[[tapCollect]]");
-        setData({
+        this.setData({
             isCollect: true
         })
-        isCollect=!isCollect;
+        this.getContentNewsList();
     },
 
     tapDianzan(){
         console.log("[[tapDianzan]]");
-        setData({
+        this.setData({
             isCollect: false
         })
+        this.getContentNewsList();
     },
 
     //跳转到用户信息页
@@ -78,19 +79,35 @@ Page({
     },
 
     getContentNewsList(){
-        wx.request({
-            url: 'http://localhost:8080/collection/getCollections',
-            method: 'GET',
-            header: {
-                "Authorization": wx.getStorageSync("token")
-            },
-            success: (res) => {
-                console.log(res.data);
-                this.setData({
-                    contentNewsList: res.data.data
-                })
-            }
-        })
+        if(this.data.isCollect){
+            wx.request({
+                url: 'http://localhost:8080/collection/getCollections',
+                method: 'GET',
+                header: {
+                    "Authorization": wx.getStorageSync("token")
+                },
+                success: (res) => {
+                    console.log(res.data);
+                    this.setData({
+                        contentNewsList: res.data.data
+                    })
+                }
+            })
+        }else{
+            wx.request({
+                url: 'http://localhost:8080/likes/getLikes',
+                method: 'GET',
+                header: {
+                    "Authorization": wx.getStorageSync("token")
+                },
+                success: (res) => {
+                    console.log(res.data);
+                    this.setData({
+                        contentNewsList: res.data.data
+                    })
+                }
+            })
+        }
     },
 
     onShow() {

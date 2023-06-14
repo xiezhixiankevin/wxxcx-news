@@ -8,7 +8,7 @@
     "window": {
         "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "北交新闻",
+        "navigationBarTitleText": "纵览天下",
         "navigationBarTextStyle": "black"
     },
     "sitemapLocation": "sitemap.json",
@@ -18,14 +18,14 @@
           {
             "pagePath": "pages/index/index",
             "text": "新闻",
-            "iconPath": "/images/home.png",
-            "selectedIconPath": "/images/home.png"
+            "iconPath": "images/w_新闻 (dian).png",
+            "selectedIconPath": "images/w_新闻.png"
           },
           {
             "pagePath": "pages/me/me",
             "text": "个人",
-            "iconPath": "/images/me.png",
-            "selectedIconPath": "/images/me.png"
+            "iconPath": "/images/用户.png",
+            "selectedIconPath": "/images/用户(dian).png"
           }
         ]
       }

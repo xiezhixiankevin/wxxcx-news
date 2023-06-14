@@ -8,7 +8,7 @@
     justify-content: flex-start;
     align-items: center;
     height: 250rpx;
-    border-bottom: 2px solid #f1cbf1;
+    border-bottom: 2px solid #fadafa;
   }
   .user-avatar {
     width: 100px;
