@@ -111,8 +111,10 @@ Page({
     },
 
     onShow() {
+        console.log("[[onShow]]")
         if(!this.data.isFirst){
             this.getUserBaseInfo();
+            this.getContentNewsList();
         }
     }
 
