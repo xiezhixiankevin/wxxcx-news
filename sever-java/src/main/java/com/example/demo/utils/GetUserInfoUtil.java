@@ -10,9 +10,11 @@ public class GetUserInfoUtil {
     // 请求的网址
     public static final String WX_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
     // appid
-    public static final String WX_LOGIN_APPID = "wx95a73c45ad609c7f";    //自己的appid
+//    public static final String WX_LOGIN_APPID = "wx95a73c45ad609c7f";    //自己的appid
+    public static final String WX_LOGIN_APPID = "wx84927355ab78a5e6";    //自己的appid
     // 密匙
-    public static final String WX_LOGIN_SECRET = "a08c114f04a4bc9ace48bce704f277cd";   //自己的secret
+//    public static final String WX_LOGIN_SECRET = "a08c114f04a4bc9ace48bce704f277cd";   //自己的secret
+    public static final String WX_LOGIN_SECRET = "16daaa241af66acb1c10b7759b6226cc";   //自己的secret
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
 

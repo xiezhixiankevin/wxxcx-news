@@ -74,6 +74,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
             // 2.2 删除collection表中对应的一条信息
             QueryWrapper<Collection> collectionQueryWrapper = new QueryWrapper<>();
             collectionQueryWrapper.eq("openid", openid);
+            collectionQueryWrapper.eq("url", url);
             collectionMapper.delete(collectionQueryWrapper);
         } else {
             return false;
