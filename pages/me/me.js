@@ -6,21 +6,23 @@ Page({
         userBaseInfo:{},
         //是否是收藏页
         isCollect: true,
+        isFirst:true
     },
 
     tapCollect(){
         console.log("[[tapCollect]]");
-        setData({
-            isCollect: false
+        this.setData({
+            isCollect: true
         })
-        isCollect=!isCollect;
+        this.getContentNewsList();
     },
 
     tapDianzan(){
         console.log("[[tapDianzan]]");
-        setData({
-            isCollect: true
+        this.setData({
+            isCollect: false
         })
+        this.getContentNewsList();
     },
 
     //跳转到用户信息页
@@ -54,6 +56,9 @@ Page({
         this.getUserBaseInfo();
         //获取contentNewsList
         this.getContentNewsList();
+        this.setData({
+            isFirst:false
+        })
     },
     
     //从后端获取用户信息
@@ -74,23 +79,43 @@ Page({
     },
 
     getContentNewsList(){
-        wx.request({
-            url: 'http://localhost:8080/collection/getCollections',
-            method: 'GET',
-            header: {
-                "Authorization": wx.getStorageSync("token")
-            },
-            success: (res) => {
-                console.log(res.data);
-                this.setData({
-                    contentNewsList: res.data.data
-                })
-            }
-        })
+        if(this.data.isCollect){
+            wx.request({
+                url: 'http://localhost:8080/collection/getCollections',
+                method: 'GET',
+                header: {
+                    "Authorization": wx.getStorageSync("token")
+                },
+                success: (res) => {
+                    console.log(res.data);
+                    this.setData({
+                        contentNewsList: res.data.data
+                    })
+                }
+            })
+        }else{
+            wx.request({
+                url: 'http://localhost:8080/likes/getLikes',
+                method: 'GET',
+                header: {
+                    "Authorization": wx.getStorageSync("token")
+                },
+                success: (res) => {
+                    console.log(res.data);
+                    this.setData({
+                        contentNewsList: res.data.data
+                    })
+                }
+            })
+        }
     },
 
     onShow() {
-
+        console.log("[[onShow]]")
+        if(!this.data.isFirst){
+            this.getUserBaseInfo();
+            this.getContentNewsList();
+        }
     }
 
 })

@@ -5,10 +5,7 @@ import com.example.demo.service.LikesService;
 import com.example.demo.utils.JwtUtil;
 import com.example.demo.utils.contentNewsList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -53,7 +50,7 @@ public class LikesController {
     }
 
     // 获取对应用户所有的点赞新闻信息
-    @PostMapping("/getLikes")
+    @GetMapping("/getLikes")
     public R<?> getLikes(HttpServletRequest request) {
         // 1 从token中获取openid
         String token = request.getHeader("Authorization");

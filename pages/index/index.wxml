@@ -3,12 +3,17 @@
   <view class='header' style="width: 750rpx; height: -5rpx; display: block; box-sizing: border-box">
     <view class='header-panel one-px-border'>
       <block wx:for='{{headerTitleName}}' wx:key='{{item.nameID}}'>
-        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="header-title {{item.nameID == tapID? 'header-title-active':''}}" bindtap='headerTitleClick' style="width: 120rpx; height: -94rpx; display: inline-block; box-sizing: border-box; left: 0rpx; top: 0rpx">
+        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="header-title {{item.nameID == tapID? 'header-title-active':''}}" bindtap='headerTitleClick' 
+        style="width: 120rpx; height: -94rpx; display: inline-block; box-sizing: border-box; left: 0rpx; top: 0rpx">
           {{item.name}}
         </view>
       </block>
     </view>
   </view>
+
+
+
+
   <view class="nav-blank"></view>
   <scroll-view class='scroll-view-container' scroll-y="{{true}}" refreshing="{{refreshing}}" bindpulldownrefresh="onPulldownrefresh_SV" bindscrolltolower='scrollToLower' lower-threshold='30'>
     <view class='content'>
@@ -22,7 +27,12 @@
         </swiper>
         <view class="swiper-index">{{swiperIndex}}</view>
       </view>
-      <view class='content-list'>
+
+
+
+
+      <!-- 新闻列表 -->
+      <!-- <view class='content-list'>
         <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
 
             <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}' data-newsuniquekey='{{item.uniquekey}}' data-newsdate='{{item.date}}' data-newsthumbnail_pic_s='{{item.thumbnail_pic_s}}'>
@@ -38,7 +48,34 @@
             </view>
           </view>
         </block>
-      </view>
+      </view> -->
+
+
+<view class='content-list'>
+    <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
+        
+        <view class='news-card' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}' data-newsuniquekey='{{item.uniquekey}}' data-newsdate='{{item.date}}' data-newsthumbnail_pic_s='{{item.thumbnail_pic_s}}'>
+            <view class='news-card-content'>
+                <view class='news-card-top'>
+                    <image class='news-card-image' src='{{item.thumbnail_pic_s}}'></image>
+                </view>
+                <view class='news-card-middle'>
+                    <view class='article-title'>{{item.title}}</view>
+                </view>
+                <view class='news-card-bottom'>
+                    <view class='article-editTime'>{{item.date}}</view>
+                    <!-- 判断如果item.author_name超过6个汉字，就显示前6个字加省略号 -->
+                    <view class='article-source'>{{item.author_name.length > 6 ? subtitle : item.author_name}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+
+
+
+
+
     </view>
     <view class="footer" wx:if="{{showCopyright}}">
       <view class="footer-component">

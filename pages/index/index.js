@@ -28,7 +28,8 @@ Page({
     tapID: 201701, // 判断是否选中
     contentNewsList: [],
     showCopyright: false,
-    refreshing: false
+    refreshing: false,
+    subtitle:'纵览天下'
   },
   scrollToLower:function(){
     wx.showLoading({
@@ -105,6 +106,7 @@ Page({
 
   //跳转到新闻详情页
   viewDetail: function(e) {
+    console.log( e.currentTarget.dataset.newsauthor.substring(0,6))
     let newsUrl = e.currentTarget.dataset.newsurl || ''
     let newsuniquekey = e.currentTarget.dataset.newsuniquekey || ''
     let newsthumbnail_pic_s = e.currentTarget.dataset.newsthumbnail_pic_s || ''

@@ -224,8 +224,8 @@ Page({
             that.setData({
                 comments: res.data.data.comments,
                 commentCount: res.data.data.comments==null?0:res.data.data.comments.length,
-                likeNum:res.data.data.news.likes,
-                collectNum:res.data.data.news.collections,
+                likeNum:res.data.data.news.likes==null?0:res.data.data.news.likes,
+                collectNum:res.data.data.news.collections==null?0:res.data.data.news.collections,
             });
         },
         fail(err) {
