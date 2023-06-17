@@ -66,6 +66,7 @@ public class LikesServiceImpl implements LikesService {
             // 2.2 删除likes表中对应的一条信息
             QueryWrapper<Likes> likesWrapper = new QueryWrapper<>();
             likesWrapper.eq("openid", openid);
+            likesWrapper.eq("url", url);
             likesMapper.delete(likesWrapper);
         } else {
             return false;
