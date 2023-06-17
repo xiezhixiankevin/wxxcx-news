@@ -1,7 +1,7 @@
 const app = getApp()
 // const appKey = '92d1b194fde6d11ed4c36f07c6def57d' // 用于访问新闻接口的appKey xzx
-const appKey = 'e8c298f8cb626f763df2aeefd590bc18' // 用于访问新闻接口的appKey zcx
-// const appKey = '7341610d45c4f3e0228f4ed302df9b3d' // 用于访问新闻接口的appKey wj
+// const appKey = 'e8c298f8cb626f763df2aeefd590bc18' // 用于访问新闻接口的appKey zcx
+const appKey = '7341610d45c4f3e0228f4ed302df9b3d' // 用于访问新闻接口的appKey wj
 const request = require('../../utils/request.js')
 const extractArticleInfo = require('./utils/getArticleTime.js')
 const shuffle = require('./utils/shuffle.js')

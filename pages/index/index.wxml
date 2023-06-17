@@ -54,7 +54,7 @@
 <view class='content-list'>
     <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
         
-        <view class='news-card' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}' data-newsuniquekey='{{item.uniquekey}}' data-newsdate='{{item.date}}' data-newsthumbnail_pic_s='{{item.thumbnail_pic_s}}'>
+        <view class='news-card' wx:if="{{item.thumbnail_pic_s.length>0}}" bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}' data-newsuniquekey='{{item.uniquekey}}' data-newsdate='{{item.date}}' data-newsthumbnail_pic_s='{{item.thumbnail_pic_s}}'>
             <view class='news-card-content'>
                 <view class='news-card-top'>
                     <image class='news-card-image' src='{{item.thumbnail_pic_s}}'></image>
